@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 15:01:46 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/16 14:30:27 by eclark           ###   ########.fr       */
+/*   Created: 2022/03/15 09:40:19 by eclark            #+#    #+#             */
+/*   Updated: 2022/03/15 13:06:32 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	ft_memset(s, '\0', n);
+	char	*str;
+	int		size;
+
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return ((char *)s1);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size = ft_strlen(s1);
+	while (size && ft_strchr(set, s1[size]))
+		size--;
+	str = ft_substr((char *)s1, 0, size + 1);
+	return (str);
 }

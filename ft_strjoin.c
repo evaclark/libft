@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 23:05:57 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/08 15:44:25 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 09:38:41 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	t_len;
+	int		i;
+	int		t_len;
 	char	*ptr;
 
 	i = 0;
