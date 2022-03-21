@@ -1,33 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 13:05:19 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/17 15:20:40 by eclark           ###   ########.fr       */
+/*   Created: 2022/03/16 14:40:34 by eclark            #+#    #+#             */
+/*   Updated: 2022/03/20 12:58:45 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	num_len(long n)
+{
+	int	len;
+
+	len = 0;
+	if (n < 0)
+	{
+		n = n * -1;
+		len++;
+	}
+	while (n > 0)
+	{
+		n = (n / 10);
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
 {
 	char	*str;
+	int		len;
+	long	nbr;
 
-	str = NULL;
-	while (*s != '\0')
+	nbr = n;
+	len = num_len(n);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
+	if (nbr == 0)
+		str[0] = 48;
+	if (nbr < 0)
 	{
-		if (*s == c)
-		{
-			str = (char *)s;
-		}
-		s++;
+		str[0] = '-';
+		nbr = nbr * -1;
 	}
-	if (c == '\0')
+	while (nbr > 0)
 	{
-		return ((char *)s);
+		str[len] = 48 + (nbr % 10);
+		nbr = nbr / 10;
+		len--;
 	}
 	return (str);
 }

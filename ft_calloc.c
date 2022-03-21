@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 17:16:42 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/16 14:29:04 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:23:51 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	if (count == 0 || size == 0)
-	{
-		return (NULL);
-	}
 	ptr = malloc(count * size);
+	if (ptr == 0)
+	{
+		return (0);
+	}
 	ft_bzero(ptr, count * size);
 	return (ptr);
 }

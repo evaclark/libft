@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:35:27 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/16 13:47:47 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/21 13:28:23 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_itoa(int n);
+char	**ft_split(char const *s, char c);
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *restrict dst, const char *src, size_t dstsize);

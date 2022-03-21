@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:16:17 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/16 13:04:33 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 17:35:01 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		return ;
 	}
 	i = 0;
-	while (*s != '\0')
+	while (s[i])
 	{
 		f(i, s + i);
 		i++;

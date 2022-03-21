@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:20:49 by evaclark          #+#    #+#             */
-/*   Updated: 2022/03/16 14:21:06 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/17 15:33:04 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (c == '\0')
 	{
-		return ((char *) s);
+		return ((char *)s);
 	}
 	return ((char *) NULL);
 }
