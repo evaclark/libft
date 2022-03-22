@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 09:40:19 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/20 17:26:37 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/22 11:05:23 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	if (!set)
-		return ((char *)s1);
+		return (ft_strdup(s1));
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
 	size = ft_strlen(s1);

@@ -6,13 +6,13 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 15:03:09 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/21 12:31:06 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/22 11:00:18 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*cdst;

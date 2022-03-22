@@ -6,45 +6,40 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:16:59 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/21 13:37:52 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:41:34 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	wordcount(char const *s, char c)
+static size_t	wordcount(char const *s, char c)
 {
-	int	i;
-	int	j;
-	int	word;
+	size_t	word_count;
+	int		skip;
 
-	i = 0;
-	j = 0;
-	word = 0;
-	while (s[i])
+	word_count = 0;
+	skip = 1;
+	while (*s)
 	{
-		if (s[i] != c && j == 0)
+		if (*s != c && skip)
 		{
-			j = 1;
-			i++;
-			word++;
+			skip = 0;
+			word_count++;
 		}
-		else if (s[i] == c)
-		{
-			j = 0;
-		}
-		i++;
+		else if (*s == c)
+			skip = 1;
+		s++;
 	}
-	return (word);
+	return (word_count);
 }
 
-static char	*wordcpy(char const *s, int start, int end)
+static char	*wordcpy(char const*s, int start, int end)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	str = malloc(sizeof(char) * (end - start + 1));
+	str = malloc(sizeof(char) * (end - start));
 	while (start < end)
 	{
 		str[i++] = s[start++];
@@ -60,9 +55,9 @@ char	**ft_split(char const *s, char c)
 	int		x;
 	char	**array;
 
-	array = malloc(sizeof(char *) * (wordcount(s, c) + 1));
-	if (!s || !array)
+	if (!s)
 		return (0);
+	array = malloc(sizeof(char *) * (wordcount(s, c) + 1));
 	i = 0;
 	j = 0;
 	x = -1;
@@ -80,15 +75,3 @@ char	**ft_split(char const *s, char c)
 	array[j] = 0;
 	return (array);
 }
-
-/*int main()
-{
-	char *str = "hello my name is beans";
-	char c;
-	c = 'l';
-	char **res = ft_split(str, c);
-	for (int i = 0; i < wordcount(str, c); i++)
-	{
-		printf("%s\n", res[i]);
-	}
-}*/
