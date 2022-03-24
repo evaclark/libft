@@ -6,7 +6,7 @@
 /*   By: eclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:16:59 by eclark            #+#    #+#             */
-/*   Updated: 2022/03/22 16:41:34 by eclark           ###   ########.fr       */
+/*   Updated: 2022/03/24 13:12:17 by eclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,45 +33,67 @@ static size_t	wordcount(char const *s, char c)
 	return (word_count);
 }
 
-static char	*wordcpy(char const*s, int start, int end)
+static char	*make_word(char const *s, char c)
 {
 	int		i;
+	int		len;
 	char	*str;
 
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	str = malloc(sizeof(char) * (end - start));
-	while (start < end)
+	while (i < len)
 	{
-		str[i++] = s[start++];
+		str[i] = s[i];
+		i++;
 	}
 	str[i] = '\0';
 	return (str);
 }
 
+static char	*wordcpy(char const *s, int i, char c, char **strs)
+{
+	strs[i] = make_word(s, c);
+	if (!strs[i])
+	{
+		while (i > 0)
+		{
+			i--;
+			free(strs[i]);
+		}
+		free(strs);
+		return (NULL);
+	}
+	return (strs[i]);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
-	int		j;
-	int		x;
-	char	**array;
+	int		n;
+	char	**strs;
 
 	if (!s)
-		return (0);
-	array = malloc(sizeof(char *) * (wordcount(s, c) + 1));
+		return (NULL);
+	n = wordcount(s, c);
+	strs = malloc(sizeof(char *) * (n + 1));
+	if (!strs)
+		return (NULL);
 	i = 0;
-	j = 0;
-	x = -1;
-	while (i <= ft_strlen(s))
+	while (i < n)
 	{
-		if (s[i] != c && x < 0)
-			x = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && x >= 0)
-		{
-			array[j++] = wordcpy(s, x, i);
-			x = -1;
-		}
+		while (*s == c)
+			s++;
+		if (*s != '\0')
+			strs[i] = wordcpy(s, i, c, strs);
+		while (*s && *s != c)
+			s++;
 		i++;
 	}
-	array[j] = 0;
-	return (array);
+	strs[i] = 0;
+	return (strs);
 }
