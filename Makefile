@@ -6,13 +6,12 @@
 #    By: eclark <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 14:53:49 by eclark            #+#    #+#              #
-#    Updated: 2022/03/24 12:26:44 by eclark           ###   ########.fr        #
+#    Updated: 2022/03/25 15:10:56 by eclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
-FLAGS = -std=c99
 CFLAGS = -Wall -Wextra -Werror -c
 RM = rm -f
 
@@ -28,7 +27,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(FLAGS) $(CFLAGS) $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS)
 	ar rcs $(NAME) $(OBJS)
 
 clean:
